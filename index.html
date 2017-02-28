@@ -92,6 +92,90 @@
           <p>Our clients demand and trust that we are on top of our security game. To earn our clients trust in our
           commitment to application security we must train. This is the start of that training.</p>
         </section>
+        <section>
+          <h2>A1 Injection</h2>
+          <p>Injection refers to injecting malicious code into a context where it can be executed. Some examples include:</p>
+          <ul>
+            <li>SQL Injection</li>
+            <li>NO-SQL Injection</li>
+            <li>Buffer Overflow</li>
+            <li>Command Injection</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Example: SQL Injection</h2>
+					<pre><code class="hljs" data-trim contenteditable>
+            SELECT * FROM Users
+            WHERE Username='$username'
+            AND Password='$password'
+					</code></pre>
+        </section>
+        <section>
+          <h2>What's The Problem?</h2>
+          <p>Un-sanitized user input is being sent to an interpreter which can cause it to execute unitended commands</p>
+        </section>
+        <section>
+          <h2>Malicious Example</h2>
+          <p>Given the malicious inputs of:</p>
+					<pre><code class="hljs" data-trim contenteditable>
+          $username = 1' or '1' = '1
+          $password = 1' or '1' = '1
+					</code></pre>
+          <p>The resulting query would be:</p>
+					<pre><code class="hljs" data-trim contenteditable>
+          SELECT * FROM Users
+          WHERE Username='1' OR '1' = '1'
+          AND Password='1' OR '1' = '1' 
+					</code></pre>
+        </section>
+        <section>
+          <h2>What Would This Do?</h2>
+          <p>This would essentially choose the first user in the <em>Users</em> table because 1 always equals 1.</p>
+          <p>Injecting something like this in a login form could essentially bypass an authentication system.</p>
+        </section>
+        <section>
+          <h2>How To Stop Injection</h2>
+          <ul>
+            <li>Utilize query parameterization</li>
+            <li>Enforce input field type and size</li>
+            <li>Ensure option selects and radios submit expected values</li>
+            <li>White listing versus black listing allowed input</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Parameterized Query Examples:</h2>
+          <h3>ASP.NET</h3>
+					<pre><code class="hljs" data-trim contenteditable>
+          string sql = "SELECT * FROM Customers
+                        WHERE CustomerId = @CustomerId";
+          SqlCommand command = new SqlCommand(sql);
+          command.Parameters.Add(
+            new SqlParameter("@CustomerId", System.Data.SqlDbType.Int));
+          command.Parameters["@CustomerId"].Value = 1;
+					</code></pre>
+        </section>
+        <section>
+          <h2>Parameterized Query Examples Continued:</h2>
+          <h3>Ruby ActiveRecord</h3>
+					<pre><code class="hljs" data-trim contenteditable>
+          # Create
+          Project.create!(:name => 'owasp')
+          # Read
+          Project.all(:conditions => "name = ?", name)
+          Project.all(:conditions => { :name => name })
+          Project.where("name = :name", :name => name)
+          # Update
+          project.update_attributes(:name => 'owasp')
+          # Delete
+          Project.delete(:name => 'name')
+					</code></pre>
+        </section>
+        <section>
+          <h2>Notes About Injection:</h2>
+          <p>In the interest of time only SQL Injection has been highlighted. There are many forms of injection
+          but they boil down to allowing unsanitized user input to reach an interpreter. For more information
+          on other types of injection reference the OWASP site, the OWASP Cheatsheet, or Google</p>
+        </section>
 			</div>
 		</div>
 
