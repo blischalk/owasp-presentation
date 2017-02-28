@@ -363,6 +363,21 @@
         </section>
         <section>
           <h3>A7 Missing Function Level Access Control</h3>
+          <p>This revolves around getting access to a resource a user should not be
+          able to see. This could be access to an area of a site they shouldn't have
+          access to or possible viewing files on a server they
+          shouldn't have access to.</p>
+        </section>
+        <section>
+          <h3>A7 Missing Function Level Access Control Prevention</h3>
+          <ul>
+            <li>Don't rely on security through obscurity</li>
+            <li>Each request should be verified at the time of access</li>
+            <li>Verify all functionality with a low privilege account and ensure the
+            user cannot access things they shouldn't</li>
+            <li>Practice the deny-by-default rule</li>
+            <li>Principal of least privilege</li>
+          </ul>
         </section>
         <section>
           <h3>A8 Cross Site Request Forgery</h3>
@@ -439,9 +454,9 @@
         <section>
           <h3>Where To Go From Here? Continued</h3>
           <ul>
-            <li><a href="http://guides.rubyonrails.org/security.html">http://guides.rubyonrails.org/security.html</a></li>
-            <li><a href="https://www.owasp.org/index.php/Ruby_on_Rails_Cheatsheet">https://www.owasp.org/index.php/Ruby_on_Rails_Cheatsheet</a></li>
-            <li><a href="https://docs.angularjs.org/guide/security">https://docs.angularjs.org/guide/security</a></li>
+            <li><a href="http://guides.rubyonrails.org/security.html">Rails Guides on Security</a></li>
+            <li><a href="https://www.owasp.org/index.php/Ruby_on_Rails_Cheatsheet">OWASP Ruby on Rails Security Cheatsheet</a></li>
+            <li><a href="https://docs.angularjs.org/guide/security">AngularJS Security Documentation</a></li>
           </ul>
         </section>
 			</div>
