@@ -35,12 +35,16 @@
           <h2>OWASP? What's That</h2>
           <p><small><a href="https://www.owasp.org/index.php/Main_Page">https://www.owasp.org/index.php/Main_Page</a></small></p>
           <blockquote>
-            <p>The Open Web Application Security Project (OWASP) is an online community which creates freely-available articles, methodologies, documentation, tools, and technologies in the field of web application security. -- <a href="https://en.wikipedia.org/wiki/OWASP">Wikipedia OWASP Definition</a></p>
+            <p>The Open Web Application Security Project (OWASP) is an online community
+            which creates freely-available articles, methodologies,
+            documentation, tools, and technologies in the field of web
+            application security. -- <a href="https://en.wikipedia.org/wiki/OWASP">Wikipedia OWASP Definition</a></p>
           </blockquote>
         </section>
         <section>
           <h2>What are the "Top Ten"</h2>
-          <p>The OWASP Top Ten are the 10 most commonly found web application vulnerabilities. These include:</p>
+          <p>The OWASP Top Ten are the 10 most commonly found web application vulnerabilities. These
+          include:</p>
           <ol>
             <li>A1 Injection</li>
             <li>A2 Weak authentication and session management</li>
@@ -65,13 +69,17 @@
         </section>
         <section>
           <h2>So How Does This Apply To Me?</h2>
-          <p>A lot of developers don't realize the impact they have on application security as they write code day to day. By ensuring
-          that you as a developer are doing your due diligence to not introduce security vulnerabilities into an application we can make
+          <p>A lot of developers don't realize the impact they have on
+          application security as they write code day to day. By
+          ensuring that you as a developer are doing your due
+          diligence to not introduce security vulnerabilities into an
+          application we can make
           the world a safer place for all of us :)</p>
         </section>
         <section>
           <h2>But My Framework Takes Care of Security Right?</h2>
-          <p>Many modern frameworks do have features to help mitigate security threats... But you have to know:</p>
+          <p>Many modern frameworks do have features to help mitigate
+          security threats... But you have to know:</p>
           <ul>
             <li>What they are</li>
             <li>How and when to use them</li>
@@ -81,22 +89,28 @@
         <section>
           <h2>But If An Attacker Wants To Get In They Will!</h2>
           <p>It doesn't mean we have to make things easy for attackers!</p>
-          <p>Many vulnerabilities are preventable by simply being aware of them and taking simple precautions</p>
+          <p>Many vulnerabilities are preventable by simply being
+          aware of them and taking simple precautions</p>
         </section>
         <section>
           <h2>It's Our Responsibility</h2>
-          <p>Security should always be considered as software is being developed. It is our responsibility as developers
-          to help protect our organization from information disclosure and most importantly, to help protect the users of
+          <p>Security should always be considered as software is being
+          developed. It is our responsibility as developers
+          to help protect our organization from information disclosure
+          and most importantly, to help protect the users of
           our system who trust us to protect them.</p>
         </section>
         <section>
           <h2>Due Diligence and Compliance</h2>
-          <p>Our clients demand and trust that we are on top of our security game. To earn our clients trust in our
-          commitment to application security we must train. This is the start of that training.</p>
+          <p>Our clients demand and trust that we are on top of our
+          security game. To earn our clients trust in our
+          commitment to application security we must train. This is
+          the start of that training.</p>
         </section>
         <section>
           <h2>A1 Injection</h2>
-          <p>Injection refers to injecting malicious code into a context where it can be executed. Some examples include:</p>
+          <p>Injection refers to injecting malicious code into a
+          context where it can be executed. Some examples include:</p>
           <ul>
             <li>SQL Injection</li>
             <li>NO-SQL Injection</li>
@@ -114,7 +128,8 @@
         </section>
         <section>
           <h2>What's The Problem?</h2>
-          <p>Un-sanitized user input is being sent to an interpreter which can cause it to execute unitended commands</p>
+          <p>Un-sanitized user input is being sent to an interpreter
+          which can cause it to execute unitended commands</p>
         </section>
         <section>
           <h2>Malicious Example</h2>
@@ -127,13 +142,15 @@
 					<pre><code class="hljs" data-trim contenteditable>
           SELECT * FROM Users
           WHERE Username='1' OR '1' = '1'
-          AND Password='1' OR '1' = '1' 
+          AND Password='1' OR '1' = '1'
 					</code></pre>
         </section>
         <section>
           <h2>What Would This Do?</h2>
-          <p>This would essentially choose the first user in the <em>Users</em> table because 1 always equals 1.</p>
-          <p>Injecting something like this in a login form could essentially bypass an authentication system.</p>
+          <p>This would essentially choose the first user in the <em>Users</em> table
+          because 1 always equals 1.</p>
+          <p>Injecting something like this in a login form could
+          essentially bypass an authentication system.</p>
         </section>
         <section>
           <h2>How To Stop Injection</h2>
@@ -174,20 +191,26 @@
         </section>
         <section>
           <h2>Notes About Injection:</h2>
-          <p>In the interest of time only SQL Injection has been highlighted. There are many forms of injection
-          but they boil down to allowing unsanitized user input to reach an interpreter. For more information
-          on other types of injection reference the OWASP site, the OWASP Cheatsheet, or Google</p>
+          <p>In the interest of time only SQL Injection has been
+          highlighted. There are many forms of injection but they boil
+          down to allowing unsanitized user input to reach an
+          interpreter. For more information
+          on other types of injection reference the OWASP site, the
+          OWASP Cheatsheet, or Google</p>
         </section>
         <section>
           <h2>A2 Weak Authentication and Session Management</h2>
-          <p>The name does a pretty good job of describing it but what would be some examples?</p>
+          <p>The name does a pretty good job of describing it but what
+          would be some examples?</p>
         </section>
         <section>
           <h2>A2 Examples:</h2>
           <ul>
-            <li>Not setting "HTTPOnly" and "Secure" attributes on a session cookie</li>
+            <li>Not setting "HTTPOnly" and "Secure" attributes on a
+            session cookie</li>
             <li>Failing to verify a user is authenticated in secure areas</li>
-            <li>Failing to verify user has proper privilege level to perform an operation</li>
+            <li>Failing to verify user has proper privilege level to
+            perform an operation</li>
             <li>Not leveraging CSRF Tokens on all forms</li>
           </ul>
         </section>
@@ -196,13 +219,15 @@
           <ul>
             <li>Set "HTTPOnly" and "Secure" attributes on a session cookie</li>
             <li>Verify a user is authenticated in secure areas</li>
-            <li>Verify user has proper privilege level to perform an operation</li>
+            <li>Verify user has proper privilege level to perform an
+            operation</li>
             <li>Leveraging CSRF Tokens on all forms</li>
           </ul>
         </section>
         <section>
           <h2>A3 XSS</h2>
-          <p>XSS occurs when attackers inject client-side scripts into web pages viewed by other users. There are 3 types of XSS attacks:</p>
+          <p>XSS occurs when attackers inject client-side scripts into
+          web pages viewed by other users. There are 3 types of XSS attacks:</p>
           <ul>
             <li>Stored XSS</li>
             <li>Reflected XSS</li>
@@ -211,23 +236,36 @@
         </section>
         <section>
           <h2>Stored XSS</h2>
-          <p>Stored XSS occurs when client-side scripts are persisted to a data store and then execute when the data is retrieved to be presented on a page.</p>
-          <p>Failure to sanitize input coming into the system before persistence and failure to escape data being rendered on the page before presentation allow
+          <p>Stored XSS occurs when client-side scripts are persisted
+          to a data store and then execute when the data is retrieved
+          to be presented on a page.</p>
+          <p>Failure to sanitize input coming into the system before
+          persistence and failure to escape data being rendered on the
+          page before presentation allow
           for this sort of attack to occur.</p>
         </section>
         <section>
           <h2>Reflected XSS</h2>
-          <p>Reflected XSS is similar to stored XSS except that the malicious client-side code isn't stored to the database. Instead, the code is often submitted
-          as part of the initial request to the server and the server accepts and returns it as part of the response that builds the page.
+          <p>Reflected XSS is similar to stored XSS except that the
+          malicious client-side code isn't stored to the
+          database. Instead, the code is often submitted as part of
+          the initial request to the server and the server accepts and
+          returns it as part of the response that builds the page.
           </p>
-          <p>Again failure to sanitize input coming into the system and failure to escape data being rendered on the page before presentation allow
+          <p>Again failure to sanitize input coming into the system
+          and failure to escape data being rendered on the page before
+          presentation allow
           for this sort of attack to occur.</p>
         </section>
         <section>
           <h2>DOM Based XSS</h2>
-          <p>DOM Based XSS is similar to reflected. The difference is that the submitted malicious payload doesn't end up as part of the rendered page
-          but rather manipulates the way client side code contained in the page already executes.</p>
-          <p>Again failure to sanitize input coming into the system and failure to escape data being rendered on the page before presentation allow
+          <p>DOM Based XSS is similar to reflected. The difference is
+          that the submitted malicious payload doesn't end up as part
+          of the rendered page but rather manipulates the way client
+          side code contained in the page already executes.</p>
+          <p>Again failure to sanitize input coming into the system
+          and failure to escape data being rendered on the page before
+          presentation allow
           for this sort of attack to occur.</p>
         </section>
         <section>
@@ -258,21 +296,28 @@
           <h3>A3 XSS Prevention</h3>
           <p>XSS is prevented by:</p>
           <ul>
-            <li>Sanitizing all user input. This should be done client side as well as server side. Constrain all input to expected types and lengths.</li>
+            <li>Sanitizing all user input. This should be done client
+            side as well as server side. Constrain all input to
+            expected types and lengths.</li>
             <li>Output encode all user submitted data per output context.</li>
-            <li>Avoid dynamically building javascript based upon user supplied data.</li>
+            <li>Avoid dynamically building javascript based upon user
+            supplied data.</li>
           </ul>
         </section>
         <section>
           <h3>A4 Insecure Direct Object Reference</h3>
-          <p>Insecure direct object reference occurs when a parameter is used directly to retrieve a resource, perform an operation, or access functionality.</p>
+          <p>Insecure direct object reference occurs when a parameter
+          is used directly to retrieve a resource, perform an
+          operation, or access functionality.</p>
         </section>
         <section>
           <h3>A4 Insecure Direct Object Reference Example</h3>
 					<pre><code class="hljs" data-trim contenteditable>
           http://foo.bar/user/10/edit
 					</code></pre>
-          <p>If the 10 in the above example is manipulated and a different user can be edited successfully, we have direct object reference</p>
+          <p>If the 10 in the above example is manipulated and a
+          different user can be edited successfully, we have direct
+          object reference</p>
         </section>
 			</div>
 		</div>
