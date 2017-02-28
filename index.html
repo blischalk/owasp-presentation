@@ -65,13 +65,15 @@
         </section>
         <section>
           <h2>So How Does This Apply To Me?</h2>
-          <p>A lot of developers don't realize the impact they have on an application security as they write code day to day.</p>
+          <p>A lot of developers don't realize the impact they have on application security as they write code day to day. By ensuring
+          that you as a developer are doing your due diligence to not introduce security vulnerabilities into an application we can make
+          the world a safer place for all of us :)</p>
         </section>
         <section>
           <h2>But My Framework Takes Care of Security Right?</h2>
-          <p>Many modern frameworks do have features to help mitigate security threats... But...</p>
+          <p>Many modern frameworks do have features to help mitigate security threats... But you have to know:</p>
           <ul>
-            <li>You have to know what they are</li>
+            <li>What they are</li>
             <li>How and when to use them</li>
             <li>Where they fall short</li>
           </ul>
@@ -175,6 +177,102 @@
           <p>In the interest of time only SQL Injection has been highlighted. There are many forms of injection
           but they boil down to allowing unsanitized user input to reach an interpreter. For more information
           on other types of injection reference the OWASP site, the OWASP Cheatsheet, or Google</p>
+        </section>
+        <section>
+          <h2>A2 Weak Authentication and Session Management</h2>
+          <p>The name does a pretty good job of describing it but what would be some examples?</p>
+        </section>
+        <section>
+          <h2>A2 Examples:</h2>
+          <ul>
+            <li>Not setting "HTTPOnly" and "Secure" attributes on a session cookie</li>
+            <li>Failing to verify a user is authenticated in secure areas</li>
+            <li>Failing to verify user has proper privilege level to perform an operation</li>
+            <li>Not leveraging CSRF Tokens on all forms</li>
+          </ul>
+        </section>
+        <section>
+          <h2>A2 Prevention:</h2>
+          <ul>
+            <li>Set "HTTPOnly" and "Secure" attributes on a session cookie</li>
+            <li>Verify a user is authenticated in secure areas</li>
+            <li>Verify user has proper privilege level to perform an operation</li>
+            <li>Leveraging CSRF Tokens on all forms</li>
+          </ul>
+        </section>
+        <section>
+          <h2>A3 XSS</h2>
+          <p>XSS occurs when attackers inject client-side scripts into web pages viewed by other users. There are 3 types of XSS attacks:</p>
+          <ul>
+            <li>Stored XSS</li>
+            <li>Reflected XSS</li>
+            <li>DOM Based XSS</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Stored XSS</h2>
+          <p>Stored XSS occurs when client-side scripts are persisted to a data store and then execute when the data is retrieved to be presented on a page.</p>
+          <p>Failure to sanitize input coming into the system before persistence and failure to escape data being rendered on the page before presentation allow
+          for this sort of attack to occur.</p>
+        </section>
+        <section>
+          <h2>Reflected XSS</h2>
+          <p>Reflected XSS is similar to stored XSS except that the malicious client-side code isn't stored to the database. Instead, the code is often submitted
+          as part of the initial request to the server and the server accepts and returns it as part of the response that builds the page.
+          </p>
+          <p>Again failure to sanitize input coming into the system and failure to escape data being rendered on the page before presentation allow
+          for this sort of attack to occur.</p>
+        </section>
+        <section>
+          <h2>DOM Based XSS</h2>
+          <p>DOM Based XSS is similar to reflected. The difference is that the submitted malicious payload doesn't end up as part of the rendered page
+          but rather manipulates the way client side code contained in the page already executes.</p>
+          <p>Again failure to sanitize input coming into the system and failure to escape data being rendered on the page before presentation allow
+          for this sort of attack to occur.</p>
+        </section>
+        <section>
+          <h2>DOM Based XSS Example</h2>
+          <h3>Vulnerable Code</h3>
+					<pre><code class="hljs" data-trim contenteditable>
+          Select your language:
+
+          <select><sc\ript>
+
+          document.write("<OPTION value=1>"+
+          document.location.href.substring(
+          document.location.href.indexOf("p=")+8)+
+          "</OPTION>");
+
+          document.write("<OPTION value=2>English</OPTION>");
+
+          </scr\ipt></select>
+					</code></pre>
+        </section>
+        <section>
+          <h3>Malicious Payload</h3>
+					<pre><code class="hljs" data-trim contenteditable>
+          http://foo.io/bar.html?p=<scri\pt>alert(document.cookie)</scri\pt>
+					</code></pre>
+        </section>
+        <section>
+          <h3>A3 XSS Prevention</h3>
+          <p>XSS is prevented by:</p>
+          <ul>
+            <li>Sanitizing all user input. This should be done client side as well as server side. Constrain all input to expected types and lengths.</li>
+            <li>Output encode all user submitted data per output context.</li>
+            <li>Avoid dynamically building javascript based upon user supplied data.</li>
+          </ul>
+        </section>
+        <section>
+          <h3>A4 Insecure Direct Object Reference</h3>
+          <p>Insecure direct object reference occurs when a parameter is used directly to retrieve a resource, perform an operation, or access functionality.</p>
+        </section>
+        <section>
+          <h3>A4 Insecure Direct Object Reference Example</h3>
+					<pre><code class="hljs" data-trim contenteditable>
+          http://foo.bar/user/10/edit
+					</code></pre>
+          <p>If the 10 in the above example is manipulated and a different user can be edited successfully, we have direct object reference</p>
         </section>
 			</div>
 		</div>
