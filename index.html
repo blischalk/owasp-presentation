@@ -319,6 +319,131 @@
           different user can be edited successfully, we have direct
           object reference</p>
         </section>
+        <section>
+          <h3>A4 Insecure Direct Object Reference Prevention</h3>
+          <ul>
+            <li>Leverage UUID's instead of integers</li>
+            <li>Validate a user allowed to (CRUD) the resource in question</li>
+          </ul>
+        </section>
+        <section>
+          <h3>A5 Security Misconfiguration</h3>
+          <p>Security misconfiguration deals with any sort of configuration that could
+          be misconfigured that would make an application
+          insecure. Some examples might include:</p>
+          <ul>
+            <li>Servers that have not been hardened</li>
+            <li>PHP configured to allow local or remote file includes</li>
+            <li>Allowing direct root login via password</li>
+          </ul>
+        </section>
+        <section>
+          <h3>A5 Security Misconfiguration Prevention</h3>
+          <p>Insure configuration options are fully understood. Research best practices
+          on hardening and configuring a system / application
+          environment.</p>
+        </section>
+        <section>
+          <h3>A6 Sensitive Data Exposure</h3>
+          <p>Sensitive data exposure deals with weak encryption. If
+            data is encrypted with a weak cipher than the data can
+            easily be decrypted and thus exposed.</p>
+        </section>
+        <section>
+          <h3>A6 Sensitive Data Exposure Prevention</h3>
+          <p>Preventing sensitive data exposure
+          can be achieved with strong encryption. At the time of this
+          writing recommendations would include:</p>
+          <ul>
+            <li>AES 128 bit or better ciphers</li>
+            <li>SHA 256 bit or better hashing with salts for passwords</li>
+            <li>Use TLS 1.2 or later for web communications</li>
+            <li>Buy extended validation (EV) certificates for web servers</li>
+          </ul>
+        </section>
+        <section>
+          <h3>A7 Missing Function Level Access Control</h3>
+        </section>
+        <section>
+          <h3>A8 Cross Site Request Forgery</h3>
+          <p>CSRF occurs when an application can accept forged requests from another site other than itself.</p>
+          <p>Lets say Chase was vulnerable to this and I know you bank at Chase and may have never logged out the last time you visited. I lure you click on a link that looks like the following:</p>
+
+					<pre><code class="hljs" data-trim contenteditable>
+
+          <a href="http://bank.com/transfer.do?acct=MARIA&amount=100000">
+            View my Pictures!</a>
+
+					</code></pre>
+
+        </section>
+        <section>
+          <h3>A8 Cross Site Request Forgery Example Continued</h3>
+          <p>If you were logged into Chase and clicked on the link you may have just transfered $100,000.00 to Maria!</p>
+        </section>
+        <section>
+          <h3>A8 Cross Site Request Forgery Prevention</h3>
+          <p>CSRF can be prevented by:</p>
+          <ul>
+            <li>Using CSRF tokens</li>
+            <li>Log out of applications when finished</li>
+            <li>Be judicious in your use of CORS</li>
+          </ul>
+        </section>
+        <section>
+          <h3>A9 Using Components With Known Vulnerabilities</h3>
+          <p>Nuff said. Make sure to keep up to date on patches and updates. This
+          is exactly how common CMS platforms are hacked. People setup
+          the sites but never update their plugins /
+          modules. Vulnerabilities are found and than an attacker
+          exploits the un-patched system.</p>
+        </section>
+        <section>
+          <h3>A10 Unvalidated Redirects and Forwards</h3>
+          <p>This is leveraged redirect an unsuspecting user to a
+          malicious system. Lets say an application has a page that
+          redirects users to a page based upon a param. Lets say the
+          application also allows users to post links and a link like
+          the following is posted:</p>
+
+					<pre><code class="hljs" data-trim contenteditable>
+            http://www.example.com/redirect.jsp?url=evil.com
+					</code></pre>
+        </section>
+        <section>
+          <h3>A10 Unvalidated Redirects and Forwards Continued</h3>
+          <p>This jsp page that performs redirects can be hi-jacked to get people to redirect to a malicious application that the attacker owns.</p>
+        </section>
+        <section>
+          <h3>A10 Unvalidated Redirects and Forwards Prevention</h3>
+          <p>Design the application to not leverage URL redirect params.</p>
+        </section>
+        <section>
+          <h3>So Thats All I Need To Know To Write Secure Software?</h3>
+          <p>No! This is just the tip of the iceberg. It is however a good foundation
+          to build off of. By being aware of these common vulnerabilities we can help
+          reduce the risk of introducing an easily avoidable vulnerability into our
+          software.</p>
+        </section>
+        <section>
+          <h3>Where To Go From Here?</h3>
+          <ul>
+            <li>Take and pass the quiz</li>
+            <li>Keep learning about this stuff and have fun with it</li>
+            <li>Download <a href="http://www.dvwa.co.uk/">DVWA</a> or something similar
+            and try to hack it!</li>
+            <li>Research your web framework of choice and learn about
+            its security features</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Where To Go From Here? Continued</h3>
+          <ul>
+            <li><a href="http://guides.rubyonrails.org/security.html">http://guides.rubyonrails.org/security.html</a></li>
+            <li><a href="https://www.owasp.org/index.php/Ruby_on_Rails_Cheatsheet">https://www.owasp.org/index.php/Ruby_on_Rails_Cheatsheet</a></li>
+            <li><a href="https://docs.angularjs.org/guide/security">https://docs.angularjs.org/guide/security</a></li>
+          </ul>
+        </section>
 			</div>
 		</div>
 
