@@ -79,7 +79,7 @@
         <section>
           <h2>But My Framework Takes Care of Security Right?</h2>
           <p>Many modern frameworks do have features to help mitigate
-          security threats... But you have to know:</p>
+          security vulnerabilities... <br />But you have to know:</p>
           <ul>
             <li>What they are</li>
             <li>How and when to use them</li>
@@ -95,7 +95,7 @@
         <section>
           <h2>It's Our Responsibility</h2>
           <p>Security should always be considered as software is being
-          developed. It is our responsibility as developers
+          developed. It is our responsibility as technologists
           to help protect our organization from information disclosure
           and most importantly, to help protect the users of
           our system who trust us to protect them.</p>
@@ -103,7 +103,7 @@
         <section>
           <h2>Due Diligence and Compliance</h2>
           <p>Our clients demand and trust that we are on top of our
-          security game. To earn our clients trust in our
+          security game. To earn our clients trust and prove our
           commitment to application security we must train. This is
           the start of that training.</p>
         </section>
@@ -147,7 +147,7 @@
         </section>
         <section>
           <h2>What Would This Do?</h2>
-          <p>This would essentially choose the first user in the <em>Users</em> table
+          <p>This would essentially select ALL users in the <em>Users</em> table
           because 1 always equals 1.</p>
           <p>Injecting something like this in a login form could
           essentially bypass an authentication system.</p>
@@ -225,7 +225,7 @@
           </ul>
         </section>
         <section>
-          <h2>A3 XSS</h2>
+          <h2>A3 Cross Site Scripting (XSS)</h2>
           <p>XSS occurs when attackers inject client-side scripts into
           web pages viewed by other users. There are 3 types of XSS attacks:</p>
           <ul>
@@ -274,22 +274,23 @@
 					<pre><code class="hljs" data-trim contenteditable>
           Select your language:
 
-          <select><sc\ript>
-
-          document.write("<OPTION value=1>"+
-          document.location.href.substring(
-          document.location.href.indexOf("p=")+8)+
-          "</OPTION>");
-
-          document.write("<OPTION value=2>English</OPTION>");
-
-          </scr\ipt></select>
+          <select>
+            script
+            document.write("<OPTION value=1>"+document.location.href.
+            substring(document.location.href.
+            indexOf("default=")+8)+"</OPTION>");
+ 
+            document.write("<OPTION value=2>English</OPTION>");
+            script
+ 
+          </select>
 					</code></pre>
         </section>
         <section>
           <h3>Malicious Payload</h3>
 					<pre><code class="hljs" data-trim contenteditable>
-          http://foo.io/bar.html?p=<scri\pt>alert(document.cookie)</scri\pt>
+          http://www.some.site/page.html?
+          default=<scri\pt>alert(document.cookie)</scri\pt>
 					</code></pre>
         </section>
         <section>
@@ -323,7 +324,7 @@
           <h3>A4 Insecure Direct Object Reference Prevention</h3>
           <ul>
             <li>Leverage UUID's instead of integers</li>
-            <li>Validate a user allowed to (CRUD) the resource in question</li>
+            <li>Validate a user is allowed to (CRUD) the resource in question</li>
           </ul>
         </section>
         <section>
@@ -339,9 +340,10 @@
         </section>
         <section>
           <h3>A5 Security Misconfiguration Prevention</h3>
-          <p>Insure configuration options are fully understood. Research best practices
-          on hardening and configuring a system / application
-          environment.</p>
+          <ul>
+            <li>Ensure configuration options are fully understood.</li>
+            <li>Research best practices on hardening and configuring a system / application environment</li>
+          </ul>
         </section>
         <section>
           <h3>A6 Sensitive Data Exposure</h3>
@@ -380,7 +382,7 @@
           </ul>
         </section>
         <section>
-          <h3>A8 Cross Site Request Forgery</h3>
+          <h3>A8 Cross Site Request Forgery (CSRF)</h3>
           <p>CSRF occurs when an application can accept forged requests from another site other than itself.</p>
           <p>Lets say Chase was vulnerable to this and I know you bank at Chase and may have never logged out the last time you visited. I lure you click on a link that looks like the following:</p>
 
@@ -415,11 +417,8 @@
         </section>
         <section>
           <h3>A10 Unvalidated Redirects and Forwards</h3>
-          <p>This is leveraged redirect an unsuspecting user to a
-          malicious system. Lets say an application has a page that
-          redirects users to a page based upon a param. Lets say the
-          application also allows users to post links and a link like
-          the following is posted:</p>
+          <p>Exploited by redirecting an unsuspecting user to a
+          malicious system using an unprotected redirection.</p>
 
 					<pre><code class="hljs" data-trim contenteditable>
             http://www.example.com/redirect.jsp?url=evil.com
@@ -445,7 +444,7 @@
           <ul>
             <li>Take and pass the quiz</li>
             <li>Keep learning about this stuff and have fun with it</li>
-            <li>Download <a href="http://www.dvwa.co.uk/">DVWA</a> or something similar
+            <li>Download <a href="http://www.dvwa.co.uk/">DVWA (http://www.dvwa.co.uk/)</a> or something similar
             and try to hack it!</li>
             <li>Research your web framework of choice and learn about
             its security features</li>
@@ -454,9 +453,9 @@
         <section>
           <h3>Where To Go From Here? Continued</h3>
           <ul>
-            <li><a href="http://guides.rubyonrails.org/security.html">Rails Guides on Security</a></li>
-            <li><a href="https://www.owasp.org/index.php/Ruby_on_Rails_Cheatsheet">OWASP Ruby on Rails Security Cheatsheet</a></li>
-            <li><a href="https://docs.angularjs.org/guide/security">AngularJS Security Documentation</a></li>
+            <li><small><a href="http://guides.rubyonrails.org/security.html">Rails Guides on Security <br />(http://guides.rubyonrails.org/security.html)</a></small></li>
+            <li><small><a href="https://www.owasp.org/index.php/Ruby_on_Rails_Cheatsheet">OWASP Ruby on Rails Security Cheatsheet <br />(https://www.owasp.org/index.php/Ruby_on_Rails_Cheatsheet)</a></small></li>
+            <li><small><a href="https://docs.angularjs.org/guide/security">AngularJS Security Documentation <br />(https://docs.angularjs.org/guide/security)</a></small></li>
           </ul>
         </section>
 			</div>
